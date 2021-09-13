@@ -25,6 +25,15 @@ client.on('messageCreate', async message => {
     }
 });
 
+client.on('interactionCreate', async (interaction) => {
+    if (interaction.customId === "contact") {
+        await interaction.reply({
+            content: "ボタンが押されました。",
+            ephemeral: false
+        });
+    }
+});
+
 require('dotenv').config();
 
 client.login(process.env.TOKEN)
