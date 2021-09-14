@@ -31,6 +31,7 @@ client.on('interactionCreate', async (interaction) => {
             content: "ボタンが押されました。",
             ephemeral: false
         });
+        console.log(client.users.fetch(interaction.user.id).id);
     }
 });
 
