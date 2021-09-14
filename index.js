@@ -28,10 +28,9 @@ client.on('messageCreate', async message => {
 client.on('interactionCreate', async (interaction) => {
     if (interaction.customId === "contact") {
         await interaction.reply({
-            content: "ボタンが押されました。",
+            content: `http://localhost:5000/${interaction.user.id}`,
             ephemeral: false
         });
-        console.log(client.users.fetch(interaction.user.id).id);
     }
 });
 
