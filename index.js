@@ -1,5 +1,6 @@
 const { Discord, Client, Intents, MessageButton, MessageActionRow } = require('discord.js')
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+const hash = require('./sample.js');
 
 client.on('ready', () => {
     console.log(`${client.user.tag} でログインしています。`)
@@ -27,8 +28,9 @@ client.on('messageCreate', async message => {
 
 client.on('interactionCreate', async (interaction) => {
     if (interaction.customId === "contact") {
+        data = hash(interaction.user.id);
         await interaction.reply({
-            content: `http://localhost:5000/${interaction.user.id}`,
+            content: `http://localhost:5000/${interaction.user.id}/${data}`,
             ephemeral: false
         });
     }
